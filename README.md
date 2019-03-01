@@ -18,10 +18,11 @@ terraform init
 
 write terraform file:
 
-resource "redmine_project" "example" {
-  name = "test1"
-  description = "test1 created with terraform"
-}
+`resource "redmine_project" "example" {`
+  `name = "test1"`
+  `description = "test1 created with terraform"`
+  `identifier = "idtest"`
+`}`
 
 terraform plan
 terraform apply

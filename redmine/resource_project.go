@@ -23,6 +23,10 @@ func resourceProject() *schema.Resource {
 				Type:     schema.TypeString,
 				Required: true,
 			},
+			"identifier": &schema.Schema{
+				Type:     schema.TypeString,
+				Required: true,
+			},
 		},
 	}
 }
@@ -32,10 +36,12 @@ func resourceProjectCreate(d *schema.ResourceData, m interface{}) error {
         config := m.(*Config)
         name := d.Get("name").(string)
         description := d.Get("description").(string)
+        identifier := d.Get("identifier").(string)
 
         i := redmine.Project{
-                        Name: projectId,
+                        Name: name,
                         Description: description,
+                        Identifier: identifier,
         }
         project, err := config.redmineClient.CreateProject(i)
         if err != nil {
