@@ -1,0 +1,22 @@
+| Overall | 10% |
+|--|--|
+| Create | 20% |
+| Read   | 0% |
+| Update | 0% |
+| Delete | 0% |
+
+#Use
+
+go build
+cp terraform-provider-redmine $HOME/.terraform.d/plugins/terraform-provider-redmine
+terraform init
+
+write terraform file:
+
+resource "redmine_project" "example" {
+  project_id = 2
+  subject = "created with terraform"
+}
+
+terraform plan
+terraform apply
