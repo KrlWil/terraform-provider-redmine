@@ -130,5 +130,16 @@ func resourceProjectUpdate(d *schema.ResourceData, m interface{}) error {
 }
 
 func resourceProjectDelete(d *schema.ResourceData, m interface{}) error {
-       return nil
+        config := m.(*Config)
+
+        id, err1 := strconv.Atoi(d.Id())
+        if err1 != nil {
+                return errors.Wrap(err1, "converting string failed")
+        }
+
+        err2 := config.redmineClient.DeleteProject(id)
+        if err2 != nil {
+            return errors.Wrap(err2, "deleting redmine issue failed")
+        }
+        return nil
 }
