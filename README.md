@@ -19,6 +19,13 @@
 
 # Use
 
+- Set environment variables
+
+  ```hcl
+  export REDMINE_URL=http://localhost:8009
+  export REDMINE_APIKEY=123456789abcdef
+  ```
+
 - write terraform file
 
 
