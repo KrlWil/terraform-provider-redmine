@@ -99,7 +99,34 @@ func resourceProjectRead(d *schema.ResourceData, m interface{}) error {
 }
 
 func resourceProjectUpdate(d *schema.ResourceData, m interface{}) error {
-       return nil
+        config := m.(*Config)
+        name := d.Get("name").(string)
+        identifier := d.Get("identifier").(string)
+        description := d.Get("description").(string)
+        createdOn := d.Get("created_on").(string)
+        updatedOn := d.Get("updated_on").(string)
+
+        //convert string to int
+        i1, err1 := strconv.Atoi(d.Id())
+
+        if err1 != nil {
+                return errors.Wrap(err1, "converting string failed")
+        }
+
+        i := redmine.Project{
+                        Id: i1,
+                        Name: name,
+                        Identifier: identifier,
+                        Description: description,
+                        CreatedOn: createdOn,
+                        UpdatedOn: updatedOn,
+        }
+        err2 := config.redmineClient.UpdateProject(i)
+
+        if err2 != nil {
+                return errors.Wrap(err2, "updating redmine project failed")
+        }
+        return nil
 }
 
 func resourceProjectDelete(d *schema.ResourceData, m interface{}) error {
