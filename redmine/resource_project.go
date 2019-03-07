@@ -72,7 +72,30 @@ func resourceProjectCreate(d *schema.ResourceData, m interface{}) error {
 }
 
 func resourceProjectRead(d *schema.ResourceData, m interface{}) error {
-       return nil
+        config :=m.(*Config)
+
+        //convert string to int
+        i1, err := strconv.Atoi(d.Id())
+
+        project, err := config.redmineClient.Project(i1)
+        if err != nil {
+                return errors.Wrap(err, "creating redmine project failed")
+        }
+
+        d.Set("name", project.Name)
+        d.Set("identifier", project.Identifier)
+
+        if project.Description !="" {
+                 d.Set("description", project.Description)
+        }
+        if project.CreatedOn !="" {
+                 d.Set("created_on", project.CreatedOn)
+        }
+        if project.UpdatedOn !="" {
+                 d.Set("updated_on", project.UpdatedOn)
+        }
+
+        return nil
 }
 
 func resourceProjectUpdate(d *schema.ResourceData, m interface{}) error {
