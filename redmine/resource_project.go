@@ -4,6 +4,7 @@ import (
     redmine "github.com/mattn/go-redmine"
     "github.com/hashicorp/terraform/helper/schema"
     "github.com/pkg/errors"
+    "strconv"
 )
 
 // resourceProject: used to map a Redmine project to a terraform schema
