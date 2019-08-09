@@ -163,6 +163,14 @@ github.com/hashicorp/yamux v0.0.0-20180604194846-3520598351bb/go.mod h1:+NfK9FKe
 github.com/hpcloud/tail v1.0.0/go.mod h1:ab1qPbhIpdTxEkNHXyeSf5vhxWSCs/tWer42PpOxQnU=
 github.com/inuits/go-redmine v0.0.0-20181021123913-2267b9239bac h1:Pi+ki5wAoZKfkrMoPe5C5NgmCcAX3lqhasXZOEDsFDI=
 github.com/inuits/go-redmine v0.0.0-20181021123913-2267b9239bac/go.mod h1:7zitL0PmSPYQIZBw3UwMuNjnDs6mg4rM6M1xJnETEu8=
+github.com/inuits/go-redmine v0.0.0-20190809094106-d4dc4b0563bf h1:LLlNh99CXK9HUqvlr8GHkTIPisHUbdR7nE3dGXrtzvQ=
+github.com/inuits/go-redmine v0.0.0-20190809094106-d4dc4b0563bf/go.mod h1:7zitL0PmSPYQIZBw3UwMuNjnDs6mg4rM6M1xJnETEu8=
+github.com/inuits/go-redmine v0.0.0-20190809095401-f57d78325ca5 h1:xgTXXQ2iS3zbmqfftWtabzQx9z1/oAcitWRLZzJTzM0=
+github.com/inuits/go-redmine v0.0.0-20190809095401-f57d78325ca5/go.mod h1:7zitL0PmSPYQIZBw3UwMuNjnDs6mg4rM6M1xJnETEu8=
+github.com/inuits/go-redmine v0.0.0-20190809122437-2390544f2266 h1:TmEaBAuzA0cLx7BTI5TJy5cSYkQNnuu09xtBPtDfJEs=
+github.com/inuits/go-redmine v0.0.0-20190809122437-2390544f2266/go.mod h1:7zitL0PmSPYQIZBw3UwMuNjnDs6mg4rM6M1xJnETEu8=
+github.com/inuits/go-redmine v0.0.0-20190809125133-eaf6df17edbb h1:eN+Z/4WmUltaYIoCsZDd6tN1zFTUDZlf4+kqkq3BsJ4=
+github.com/inuits/go-redmine v0.0.0-20190809125133-eaf6df17edbb/go.mod h1:7zitL0PmSPYQIZBw3UwMuNjnDs6mg4rM6M1xJnETEu8=
 github.com/jellevandenhooff/dkim v0.0.0-20150330215556-f50fe3d243e1/go.mod h1:E0B/fFc00Y+Rasa88328GlI/XbtyysCtTHZS8h7IrBU=
 github.com/jessevdk/go-flags v1.4.0/go.mod h1:4FA24M0QyGHXBuZZK/XkWh8h0e1EYbRYJSGM75WSRxI=
 github.com/jmespath/go-jmespath v0.0.0-20160202185014-0b12d6b521d8/go.mod h1:Nht3zPeWKUH0NzdCt2Blrr5ys8VGpn0CEB0cQHVjt7k=

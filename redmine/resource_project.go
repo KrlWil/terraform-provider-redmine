@@ -24,6 +24,10 @@ func resourceProject() *schema.Resource {
 				Type:     schema.TypeString,
 				Required: true,
 			},
+			"parent": &schema.Schema{
+				Type:     schema.TypeInt,
+				Optional: true,
+			},
 			"description": &schema.Schema{
 				Type:     schema.TypeString,
 				Optional: true,
@@ -31,13 +35,11 @@ func resourceProject() *schema.Resource {
 			},
 			"created_on": &schema.Schema{
 				Type:     schema.TypeString,
-				Optional: true,
-				Default:  "",
+				Computed: true,
 			},
 			"updated_on": &schema.Schema{
 				Type:     schema.TypeString,
-				Optional: true,
-				Default:  "",
+				Computed: true,
 			},
 		},
 	}
@@ -48,24 +50,40 @@ func resourceProjectCreate(d *schema.ResourceData, m interface{}) error {
 	config := m.(*Config)
 	name := d.Get("name").(string)
 	identifier := d.Get("identifier").(string)
+	parent := d.Get("parent").(int)
 	description := d.Get("description").(string)
 	createdOn := d.Get("created_on").(string)
 	updatedOn := d.Get("updated_on").(string)
 
+	var parentStruct *redmine.Project
+	var err error
+	if parent != 0 {
+		parentStruct, err = config.redmineClient.Project(parent)
+		if err != nil {
+			return errors.Wrap(err, "parent id not found")
+		}
+	}
+
 	i := redmine.Project{
 		Name:        name,
 		Identifier:  identifier,
+		Parent:      parentStruct,
 		Description: description,
 		CreatedOn:   createdOn,
 		UpdatedOn:   updatedOn,
 	}
+
+	if parent != 0 {
+		i.ParentID = parent
+	}
+
 	project, err := config.redmineClient.CreateProject(i)
 	if err != nil {
 		return errors.Wrap(err, "creating redmine project failed")
 	}
 
-	// convert project.Id to string, setId() takes string
-	s1 := strconv.Itoa(project.Id)
+	// convert project.ID to string, setId() takes string
+	s1 := strconv.Itoa(project.ID)
 
 	d.SetId(s1)
 
@@ -80,12 +98,15 @@ func resourceProjectRead(d *schema.ResourceData, m interface{}) error {
 
 	project, err := config.redmineClient.Project(i1)
 	if err != nil {
-		return errors.Wrap(err, "creating redmine project failed")
+		return errors.Wrap(err, "fetching redmine project failed")
 	}
 
 	d.Set("name", project.Name)
 	d.Set("identifier", project.Identifier)
 
+	if project.Parent != nil {
+		d.Set("parent", project.Parent.ID)
+	}
 	if project.Description != "" {
 		d.Set("description", project.Description)
 	}
@@ -103,6 +124,7 @@ func resourceProjectUpdate(d *schema.ResourceData, m interface{}) error {
 	config := m.(*Config)
 	name := d.Get("name").(string)
 	identifier := d.Get("identifier").(string)
+	parent := d.Get("parent").(int)
 	description := d.Get("description").(string)
 	createdOn := d.Get("created_on").(string)
 	updatedOn := d.Get("updated_on").(string)
@@ -114,14 +136,29 @@ func resourceProjectUpdate(d *schema.ResourceData, m interface{}) error {
 		return errors.Wrap(err1, "converting string failed")
 	}
 
+	var parentStruct *redmine.Project
+	var err error
+	if parent != 0 {
+		parentStruct, err = config.redmineClient.Project(parent)
+		if err != nil {
+			return errors.Wrap(err, "parent id not found")
+		}
+	}
+
 	i := redmine.Project{
-		Id:          i1,
+		ID:          i1,
 		Name:        name,
 		Identifier:  identifier,
+		Parent:      parentStruct,
 		Description: description,
 		CreatedOn:   createdOn,
 		UpdatedOn:   updatedOn,
 	}
+
+	if parent != 0 {
+		i.ParentID = parent
+	}
+
 	err2 := config.redmineClient.UpdateProject(i)
 
 	if err2 != nil {
