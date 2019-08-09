@@ -1,9 +1,9 @@
 package main
 
 import (
-	"github.com/KrlWil/terraform-provider-redmine/redmine"
 	"github.com/hashicorp/terraform/plugin"
 	"github.com/hashicorp/terraform/terraform"
+	"github.com/inuits/terraform-provider-redmine/redmine"
 )
 
 func main() {
@@ -11,6 +11,5 @@ func main() {
 		ProviderFunc: func() terraform.ResourceProvider {
 			return redmine.Provider()
 		},
-
 	})
 }
