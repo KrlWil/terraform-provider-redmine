@@ -7,7 +7,7 @@ import (
 	"strconv"
 )
 
-// resourceProject: used to map a Redmine project to a terraform schema
+// resourceProject used to map a Redmine project to a terraform schema
 func resourceProject() *schema.Resource {
 	return &schema.Resource{
 		Create: resourceProjectCreate,
@@ -64,7 +64,7 @@ func resourceProjectCreate(d *schema.ResourceData, m interface{}) error {
 		return errors.Wrap(err, "creating redmine project failed")
 	}
 
-	//convert project.Id to string, setId() takes string
+	// convert project.Id to string, setId() takes string
 	s1 := strconv.Itoa(project.Id)
 
 	d.SetId(s1)
@@ -75,7 +75,7 @@ func resourceProjectCreate(d *schema.ResourceData, m interface{}) error {
 func resourceProjectRead(d *schema.ResourceData, m interface{}) error {
 	config := m.(*Config)
 
-	//convert string to int
+	// convert string to int
 	i1, err := strconv.Atoi(d.Id())
 
 	project, err := config.redmineClient.Project(i1)
@@ -107,7 +107,7 @@ func resourceProjectUpdate(d *schema.ResourceData, m interface{}) error {
 	createdOn := d.Get("created_on").(string)
 	updatedOn := d.Get("updated_on").(string)
 
-	//convert string to int
+	// convert string to int
 	i1, err1 := strconv.Atoi(d.Id())
 
 	if err1 != nil {

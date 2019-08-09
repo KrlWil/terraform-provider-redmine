@@ -16,5 +16,4 @@ func (c *Config) createAndAuthenticateClient() {
 	redmineClient := redmine.NewClient(os.Getenv("REDMINE_URL"), os.Getenv("REDMINE_APIKEY"))
 
 	c.redmineClient = redmineClient
-
 }
