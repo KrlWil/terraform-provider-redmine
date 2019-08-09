@@ -4,7 +4,7 @@ import (
 	"github.com/hashicorp/terraform/helper/schema"
 )
 
-// Provider: returns a terraform.ResourceProvider and maps redmine_project to it
+// Provider returns a terraform.ResourceProvider and maps redmine_project to it
 func Provider() *schema.Provider {
 	return &schema.Provider{
 		ResourcesMap: map[string]*schema.Resource{
@@ -18,7 +18,6 @@ func Provider() *schema.Provider {
 func providerConfigure(d *schema.ResourceData) (interface{}, error) {
 	var c Config
 
-    c.createAndAuthenticateClient()
+	c.createAndAuthenticateClient()
 	return &c, nil
 }
-
