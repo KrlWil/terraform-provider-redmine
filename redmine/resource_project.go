@@ -15,12 +15,12 @@ func resourceProject() *schema.Resource {
 		Update: resourceProjectUpdate,
 		Delete: resourceProjectDelete,
 
-        Importer: &schema.ResourceImporter{
-            State: func(d *schema.ResourceData, meta interface{}) ([]*schema.ResourceData, error) {
-                d.Set("function_name", d.Id())
-                return []*schema.ResourceData{d}, nil
-            },
-        },
+		Importer: &schema.ResourceImporter{
+			State: func(d *schema.ResourceData, meta interface{}) ([]*schema.ResourceData, error) {
+				d.Set("function_name", d.Id())
+				return []*schema.ResourceData{d}, nil
+			},
+		},
 
 		Schema: map[string]*schema.Schema{
 			"name": &schema.Schema{
