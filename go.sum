@@ -171,6 +171,10 @@ github.com/inuits/go-redmine v0.0.0-20190809122437-2390544f2266 h1:TmEaBAuzA0cLx
 github.com/inuits/go-redmine v0.0.0-20190809122437-2390544f2266/go.mod h1:7zitL0PmSPYQIZBw3UwMuNjnDs6mg4rM6M1xJnETEu8=
 github.com/inuits/go-redmine v0.0.0-20190809125133-eaf6df17edbb h1:eN+Z/4WmUltaYIoCsZDd6tN1zFTUDZlf4+kqkq3BsJ4=
 github.com/inuits/go-redmine v0.0.0-20190809125133-eaf6df17edbb/go.mod h1:7zitL0PmSPYQIZBw3UwMuNjnDs6mg4rM6M1xJnETEu8=
+github.com/inuits/go-redmine v0.0.0-20190809125726-0ea73c092d13 h1:2hhB2P3jnb4i5OWm6TDhkqWiJWoxf/JC5Cw581kP77o=
+github.com/inuits/go-redmine v0.0.0-20190809125726-0ea73c092d13/go.mod h1:7zitL0PmSPYQIZBw3UwMuNjnDs6mg4rM6M1xJnETEu8=
+github.com/inuits/go-redmine v0.0.0-20190809143240-dbef212b9780 h1:/oKiQngsS1tdwp7PN/3X8KPVQT9KgraXwv/fX13K6Ys=
+github.com/inuits/go-redmine v0.0.0-20190809143240-dbef212b9780/go.mod h1:7zitL0PmSPYQIZBw3UwMuNjnDs6mg4rM6M1xJnETEu8=
 github.com/jellevandenhooff/dkim v0.0.0-20150330215556-f50fe3d243e1/go.mod h1:E0B/fFc00Y+Rasa88328GlI/XbtyysCtTHZS8h7IrBU=
 github.com/jessevdk/go-flags v1.4.0/go.mod h1:4FA24M0QyGHXBuZZK/XkWh8h0e1EYbRYJSGM75WSRxI=
 github.com/jmespath/go-jmespath v0.0.0-20160202185014-0b12d6b521d8/go.mod h1:Nht3zPeWKUH0NzdCt2Blrr5ys8VGpn0CEB0cQHVjt7k=

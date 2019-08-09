@@ -40,6 +40,11 @@ func resourceProject() *schema.Resource {
 				Optional: true,
 				Default:  "",
 			},
+			"is_public": &schema.Schema{
+				Type:     schema.TypeBool,
+				Optional: true,
+				Default:  false,
+			},
 			"created_on": &schema.Schema{
 				Type:     schema.TypeString,
 				Computed: true,
@@ -59,6 +64,7 @@ func resourceProjectCreate(d *schema.ResourceData, m interface{}) error {
 	identifier := d.Get("identifier").(string)
 	parent := d.Get("parent").(int)
 	description := d.Get("description").(string)
+	isPublic := d.Get("is_public").(bool)
 	createdOn := d.Get("created_on").(string)
 	updatedOn := d.Get("updated_on").(string)
 
@@ -76,6 +82,7 @@ func resourceProjectCreate(d *schema.ResourceData, m interface{}) error {
 		Identifier:  identifier,
 		Parent:      parentStruct,
 		Description: description,
+		IsPublic:    isPublic,
 		CreatedOn:   createdOn,
 		UpdatedOn:   updatedOn,
 	}
@@ -110,6 +117,7 @@ func resourceProjectRead(d *schema.ResourceData, m interface{}) error {
 
 	d.Set("name", project.Name)
 	d.Set("identifier", project.Identifier)
+	d.Set("is_public", project.IsPublic)
 
 	if project.Parent != nil {
 		d.Set("parent", project.Parent.ID)
@@ -133,6 +141,7 @@ func resourceProjectUpdate(d *schema.ResourceData, m interface{}) error {
 	identifier := d.Get("identifier").(string)
 	parent := d.Get("parent").(int)
 	description := d.Get("description").(string)
+	isPublic := d.Get("is_public").(bool)
 	createdOn := d.Get("created_on").(string)
 	updatedOn := d.Get("updated_on").(string)
 
@@ -158,6 +167,7 @@ func resourceProjectUpdate(d *schema.ResourceData, m interface{}) error {
 		Identifier:  identifier,
 		Parent:      parentStruct,
 		Description: description,
+		IsPublic:    isPublic,
 		CreatedOn:   createdOn,
 		UpdatedOn:   updatedOn,
 	}
